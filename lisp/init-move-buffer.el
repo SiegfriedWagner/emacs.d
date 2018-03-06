@@ -14,4 +14,4 @@
 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 (global-set-key (kbd "<C-S-right>")  'buf-move-right)
 
-(provide 'move-buffer)
+(provide 'init-move-buffer)
