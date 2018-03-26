@@ -1,4 +1,4 @@
 (require 'package)
-(add-hook 'org-mode 'org-indent)
-(add-hook 'org-mode 'visual-line)
+(add-hook 'org-mode-hook 'org-indent-mode)
+(add-hook 'org-mode-hook 'visual-line-mode)
 (provide 'init-org)
