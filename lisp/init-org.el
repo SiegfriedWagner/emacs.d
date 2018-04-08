@@ -1,4 +1,5 @@
 (require 'package)
 (add-hook 'org-mode-hook 'org-indent-mode)
 (add-hook 'org-mode-hook 'visual-line-mode)
+(setq org-image-actual-width nil)
 (provide 'init-org)

@@ -17,35 +17,46 @@
 (setq use-package-always-ensure t)
 (use-package try)
 (use-package which-key
-	:config
-	(which-key-mode))
-
-(use-package nyan-mode
   :config
-  (nyan-mode)
-  (setq nyan-wavy-trail t)
-  (setq nyan-animate-nyancat t))
+  (which-key-mode))
+(use-package nyan-mode
+  :init
+  (setq nyan-wavy-trail t
+	nyan-animate-nyancat t)
+  :config
+  (nyan-mode))
 
 (use-package rainbow-delimiters
-  :config
+  :init
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
-(use-package  yasnippet)
-(use-package zygospore
+(use-package  yasnippet
   :config
   (use-package yasnippet-snippets)
-  :init
+  (yas-global-mode 1))
+;; (use-package golden-ratio
+;;   :init
+;;   )
+(use-package rainbow-mode
+  :hook
+  (html-mode . rainbow-mode)
+  (css-mode . rainbow-mode))
+(use-package zygospore
+  :config
   (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows))
 (use-package flycheck
-  :init
+  :config
   (global-flycheck-mode))
 (setq gdb-many-windows t gdb-show-main t)
+(use-package aggressive-indent
+  :config
+  (global-aggressive-indent-mode 1))
 (use-package sublimity)
 (require 'sublimity)
 ;; (require 'sublimity-scroll)
 (require 'sublimity-map) ;; experimental
 ;; (require 'sublimity-attractive)
-(sublimity-map-set-delay nil)
-(sublimity-mode 1)
+(sublimity-map-set-delay 1)
+;; (sublimity-mode 1)
 (require 'init-move-buffer)
 (require 'init-company)
 (require 'init-org)
@@ -57,20 +68,8 @@
 (desktop-save-mode 1)
 (desktop-load-default)
 (global-linum-mode t)
+(electric-pair-mode t)
 (global-set-key [C-tab] 'other-window)
 (provide 'init)
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (sublimity-mode buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+

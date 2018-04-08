@@ -1,5 +1,8 @@
 (use-package helm)
 (require 'helm-config)
+(setq helm-autoresize-max-height 30
+      helm-autoresize-min-height 20
+      helm-split-window-inside-p t)
 (helm-autoresize-mode t)
 (helm-mode 1)
 (define-key global-map [remap find-file] 'helm-find-files)
