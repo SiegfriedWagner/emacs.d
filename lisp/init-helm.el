@@ -1,4 +1,5 @@
 (use-package helm)
+(use-package helm-tramp)
 (require 'helm-config)
 (setq helm-autoresize-max-height 30
       helm-autoresize-min-height 20

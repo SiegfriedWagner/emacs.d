@@ -7,6 +7,6 @@
 (when window-system
   (add-hook 'emacs-startup-hook 'sr-speedbar-open)
   (add-hook 'kill-emacs-hook 'sr-speedbar-close))
-(global-set-key [?\C-c ?\C-c ?\C-s] 'sr-speedbar-toggle)
+(global-set-key (kbd "C-c C-c C-s") 'sr-speedbar-toggle)
 (provide 'init-speedbar)
 ;;; init-speedbar ends here
