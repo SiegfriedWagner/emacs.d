@@ -1,6 +1,3 @@
-[submodule "themes/atom-one-dark-theme"]
-	path = themes/atom-one-dark-theme
-	url = https://github.com/jonathanchu/atom-one-dark-theme
 [submodule "snippets"]
 	path = snippets
-	url = https://github.com/SiegfriedWagner/emacs.d-snippets.git
+	url = https://gitlab.com/Wagner/emacs.d-snippets

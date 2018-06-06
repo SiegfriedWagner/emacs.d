@@ -64,14 +64,16 @@
 (require 'init-helm)
 (require 'init-speedbar)
 (require 'init-python)
+(require 'init-web)
 (add-hook 'c-mode-hook
 	  (lambda()
 	    (local-unset-key (kbd "C-c C-c"))))
 ;; (eval-after-load "c-mode"
 ;;   '(define-key major-mode-map (kbd "C-c C-c") nil))
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/atom-one-dark-theme")
-(load-theme 'atom-one-dark t)
+(use-package atom-one-dark-theme
+  :config
+  (load-theme 'atom-one-dark t))
 (desktop-save-mode 1)
 (desktop-load-default)
 (global-linum-mode t)
@@ -88,7 +90,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ein helm-tramp gdscript-mode buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
+    (ac-html-csswatcher ein helm-tramp gdscript-mode buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
