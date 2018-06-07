@@ -1,5 +1,6 @@
 (require 'package)
 (add-hook 'org-mode-hook 'org-indent-mode)
 (add-hook 'org-mode-hook 'visual-line-mode)
+(define-key org-mode-map (kbd "C-<tab>") nil)
 (setq org-image-actual-width nil)
 (provide 'init-org)
