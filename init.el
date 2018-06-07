@@ -56,20 +56,23 @@
 	    (lambda()
 	      (linum-mode -1)))
   (pdf-tools-install))
-(use-package sublimity)
-(require 'sublimity)
-;; (require 'sublimity-scroll)
-(require 'sublimity-map) ;; experimental
-;; (require 'sublimity-attractive)
-(sublimity-map-set-delay 1)
-;; (sublimity-mode 1)
+;; (use-package sublimity
+;;   :config
+;;   (sublimity-map-set-delay 1)
+;;   (sublimity-mode 1))
+
 (use-package gdscript-mode)
 (require 'init-move-buffer)
 (require 'init-company)
+(require 'init-org)
+(require 'init-helm)
+(require 'init-speedbar)
+(require 'init-python)
+(require 'init-web)
 
-
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/atom-one-dark-theme")
-(load-theme 'atom-one-dark t)
+(use-package atom-one-dark-theme
+  :config
+  (load-theme 'atom-one-dark t))
 (desktop-save-mode 1)
 (desktop-load-default)
 (global-linum-mode t)
@@ -78,3 +81,17 @@
 (global-set-key (kbd "C-<tab>") 'other-window)
 (provide 'init)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
