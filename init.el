@@ -56,11 +56,12 @@
 	    (lambda()
 	      (linum-mode -1)))
   (pdf-tools-install))
-;; (use-package sublimity
-;;   :config
-;;   (sublimity-map-set-delay 1)
-;;   (sublimity-mode 1))
-
+;; (use-package minimap
+;;   :init
+;;   (setq minimap-window-location "right")
+;;   (setq minimap-width-fraction 0.1)
+;;   (minimap-mode t)
+;;   )
 (use-package gdscript-mode)
 (require 'init-move-buffer)
 (require 'init-company)
@@ -86,9 +87,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(minimap-hide-fringes t)
+ '(minimap-mode nil)
+ '(minimap-recreate-window nil)
  '(package-selected-packages
    (quote
-    (buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
+    (minimap buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
