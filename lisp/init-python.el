@@ -7,8 +7,10 @@
 ;; (use-package elpy)
 (use-package ein
   :init
-  (setq ein:jupyter-default-notebook-directory "jupyter notebook")
-  (setq ein:completion-backend 'ein:use-company-backend))
+  (setq ein:jupyter-default-notebook-directory "/home/siegfriedwagner/jupyter_notebooks/")
+  (setq ein:completion-backend 'ein:use-company-backend)
+  (setq ein:console-executable "/usr/bin/ipython")
+  (setq ein:jupyter-default-server-command "jupyter"))
 
 ;; (setq python-shell-interpreter "ipython"
 ;;       python-shell-interpreter-args "-i --simple-prompt")
