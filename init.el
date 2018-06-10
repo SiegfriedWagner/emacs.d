@@ -92,7 +92,7 @@
  '(minimap-recreate-window nil)
  '(package-selected-packages
    (quote
-    (minimap buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
+    (company-tern company-statistics company-php php-mode minimap buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
