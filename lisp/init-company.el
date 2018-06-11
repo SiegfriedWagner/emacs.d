@@ -2,9 +2,10 @@
 (use-package company
   :diminish "x"
   :config 
-  (setq company-tooltip-idle-delay nil company-minimum-prefix-length 1))
-(add-hook 'after-init-hook 'global-company-mode)
-(define-key company-mode-map (kbd "C-SPC") 'company-complete)
+  (setq company-tooltip-idle-delay nil company-minimum-prefix-length 1)
+  (add-to-list 'company-backends 'company-yasnippet)
+  (add-hook 'after-init-hook 'global-company-mode)
+  (define-key company-mode-map (kbd "C-SPC") 'company-complete))
 (use-package company-web
   :config
   (add-to-list 'company-backends 'company-web-html))
@@ -33,12 +34,14 @@
   :config
   (eval-after-load 'company
     '(add-to-list 'company-backends 'company-irony)))
-;; (use-package company-tern
-;;   :config
-;;   (add-to-list 'company-backends 'company-tern)
-;;   (add-hook 'js2-mode-hook (lambda ()
-;; 			     (tern-mode)
-;; 			     (company-mode))))
+(use-package company-tern
+  :init (add-to-list 'company-backends 'company-tern)
+  :config (setq company-tern-property-marker nil))
+(use-package ac-html-csswatcher
+  :config
+  (company-web-csswatcher-setup)
+  (add-hook 'web-mode-hook 'ac-html-csswatcher+)
+  )
 (use-package helm-company)
 (eval-after-load 'company
   '(progn

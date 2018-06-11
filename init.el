@@ -7,7 +7,8 @@
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
-
+(setenv "PATH" (concat (getenv "PATH") ":/usr/bin"))
+(setq exec-path (append exec-path '("/usr/bin")))
 (package-initialize)
 (defalias 'yes-or-no-p 'y-or-n-p)
 ;; Bootstrap `use-package'
@@ -92,7 +93,7 @@
  '(minimap-recreate-window nil)
  '(package-selected-packages
    (quote
-    (company-tern company-statistics company-php php-mode minimap buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
+    (tern ac-html-csswatcher company-tern company-statistics company-php php-mode minimap buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
