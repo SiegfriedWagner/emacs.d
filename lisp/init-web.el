@@ -1,5 +1,3 @@
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . html-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (use-package web-mode
   :config
   (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode)) ;; - For Drupal
@@ -24,7 +22,39 @@
    web-mode-enable-css-colorization t
    web-mode-enable-current-element-highlight t)
   (define-key web-mode-map (kbd "C-c C-v") 'browse-url-of-buffer)
-  (local-set-key (kbd "RET") 'newline-and-indent))
+  (local-set-key (kbd "RET") 'newline-and-indent)
+
+  ;; (defun my-web-mode-hook()
+  ;;   "Hook for web-mode"
+  ;;   (setq-local company-backends '(
+  ;; 				   company-tern
+  ;; 				   company-web-html
+  ;; 				   ;; company-css
+  ;; 				   company-files
+  ;; 				   company-yasnippet
+  ;; 				   ;; company-dabbrev
+  
+  ;; 				   :with company-css)))
+  ;; (add-hook 'web-mode-hook 'my-web-mode-hook)
+  (defun my-web-mode-hook ()
+    "Hook for `web-mode'."
+    (set (make-local-variable 'company-backends)
+         '(company-tern (company-web-html
+			 ;; company-yasnippet
+			 company-files
+			 company-css))))
+
+  (add-hook 'web-mode-hook 'my-web-mode-hook)
+  (advice-add 'company-tern :before
+              #'(lambda (&rest _)
+                  (if (equal major-mode 'web-mode)
+                      (let ((web-mode-cur-language
+                             (web-mode-language-at-pos)))
+			(if (or (string= web-mode-cur-language "javascript")
+				(string= web-mode-cur-language "jsx"))
+                            (unless tern-mode (tern-mode))
+                          (if tern-mode (tern-mode -1)))))))
+  )
 (use-package web-beautify
   :commands (web-beautify-css
 	     web-beautify-css-buffer
@@ -35,9 +65,4 @@
 (use-package php-mode
   ;; (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
   )
-(use-package tern
-  :config
-  (add-hook 'js2-mode-hook 'tern-mode)
-  (add-hook 'web-mode-hook 'tern-mode)
-  (setq tern-command (append tern-command '("--no-port-file"))))
 (provide 'init-web)

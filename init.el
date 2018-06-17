@@ -70,6 +70,7 @@
 (require 'init-helm)
 (require 'init-speedbar)
 (require 'init-python)
+(require 'init-js)
 (require 'init-web)
 
 (use-package atom-one-dark-theme
@@ -78,6 +79,8 @@
 (desktop-save-mode 1)
 (desktop-load-default)
 (global-linum-mode t)
+(scroll-bar-mode -1)
+
 (electric-pair-mode t)
 (setq tramp-verbose 10)
 (global-set-key (kbd "C-<tab>") 'other-window)

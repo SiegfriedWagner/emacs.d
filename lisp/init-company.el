@@ -3,12 +3,10 @@
   :diminish "x"
   :config 
   (setq company-tooltip-idle-delay nil company-minimum-prefix-length 1)
-  (add-to-list 'company-backends 'company-yasnippet)
-  (add-hook 'after-init-hook 'global-company-mode)
-  (define-key company-mode-map (kbd "C-SPC") 'company-complete))
-(use-package company-web
-  :config
-  (add-to-list 'company-backends 'company-web-html))
+  (global-company-mode)
+  (define-key company-mode-map (kbd "C-SPC") 'company-complete)
+  ;; (add-to-list 'company-backends 'company-yasnippet) TODO: Fix yasnippet dominance
+  )
 (use-package company-php
   :config
   (add-hook 'php-mode-hook
@@ -32,15 +30,37 @@
   (add-hook 'objc-mode-hook 'my-irony-mode-on))
 (use-package company-irony
   :config
-  (eval-after-load 'company
-    '(add-to-list 'company-backends 'company-irony)))
+  (add-to-list 'company-backends 'company-irony))
 (use-package company-tern
-  :init (add-to-list 'company-backends 'company-tern)
-  :config (setq company-tern-property-marker nil))
+  :config
+  (setq company-tern-property-marker nil)
+  (add-to-list 'company-backends 'company-tern))
 (use-package ac-html-csswatcher
   :config
   (company-web-csswatcher-setup)
   (add-hook 'web-mode-hook 'ac-html-csswatcher+)
+  )
+(use-package company-web
+  :config
+  (add-to-list 'company-backends 'company-web-html)
+  ;; Enable CSS completion between <style>...</style>
+  ;; (defadvice company-css (before web-mode-set-up-ac-sources activate)
+  ;;   "Set CSS completion based on current language before running `company-css'."
+  ;;   (if (equal major-mode 'web-mode)
+  ;; 	(let ((web-mode-cur-language (web-mode-language-at-pos)))
+  ;;         (if (string= web-mode-cur-language "css")
+  ;;             (unless css-mode (css-mode))))))
+
+  ;; ;; Enable JavaScript completion between <script>...</script> etc.
+  ;; (defadvice company-tern (before web-mode-set-up-ac-sources activate)
+  ;;   "Set `tern-mode' based on current language before running `company-tern'."
+  ;;   (if (equal major-mode 'web-mode)
+  ;; 	(let ((web-mode-cur-language (web-mode-language-at-pos)))
+  ;;         (if (or (string= web-mode-cur-language "javascript")
+  ;; 		  (string= web-mode-cur-language "jsx"))
+  ;;             (unless tern-mode (tern-mode))
+  ;;           ;; (if tern-mode (tern-mode))
+  ;;           ))))
   )
 (use-package helm-company)
 (eval-after-load 'company
