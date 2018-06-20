@@ -66,7 +66,7 @@
     (treemacs-git-mode 'extended)
     (treemacs)))
 (use-package rainbow-delimiters
-  :init
+  :config
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 (use-package  yasnippet
   :config
@@ -87,7 +87,6 @@
 (use-package flycheck
   :config
   (global-flycheck-mode))
-(setq gdb-many-windows t gdb-show-main t)
 (use-package aggressive-indent
   :config
   (global-aggressive-indent-mode 1))
@@ -117,6 +116,7 @@
 (scroll-bar-mode -1)
 (electric-pair-mode t)
 (setq tramp-verbose 10)
+(setq gdb-many-windows t gdb-show-main t)
 (global-set-key (kbd "C-<tab>") 'other-window)
 (provide 'init)
 ;;; init.el ends here
@@ -139,4 +139,4 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org-bullets buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
+    (pdf-tools aggressive-indent flycheck zygospore yasnippet-snippets yasnippet zoom org-bullets buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
