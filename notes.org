@@ -1,0 +1,7 @@
+* Modes to check
+ - projectile
+ - hydra
+* Things to fix
+- prettietr org mode
+- move config to org
+

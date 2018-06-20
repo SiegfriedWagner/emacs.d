@@ -39,8 +39,32 @@
   (powerline-default-theme))
 (use-package treemacs
   :config
-  (treemacs-follow-mode t)
-  (treemacs-filewatch-mode t))
+  (progn
+    (setq treemacs-collapse-dirs              (if (executable-find "python") 3 0)
+          treemacs-file-event-delay           1000
+          treemacs-follow-after-init          t
+          treemacs-follow-recenter-distance   0.1
+          treemacs-goto-tag-strategy          'refetch-index
+          treemacs-indentation                2
+          treemacs-indentation-string         " "
+          treemacs-is-never-other-window      nil
+          treemacs-no-png-images              nil
+          treemacs-project-follow-cleanup     nil
+          treemacs-persist-file               (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
+          treemacs-recenter-after-file-follow nil
+          treemacs-recenter-after-tag-follow  nil
+          treemacs-show-hidden-files          t
+          treemacs-silent-filewatch           nil
+          treemacs-silent-refresh             nil
+          treemacs-sorting                    'alphabetic-desc
+          treemacs-space-between-root-nodes   t
+          treemacs-tag-follow-cleanup         t
+          treemacs-tag-follow-delay           1.5
+          treemacs-width                      35)
+    (treemacs-follow-mode t)
+    (treemacs-filewatch-mode t)
+    (treemacs-git-mode 'extended)
+    (treemacs)))
 (use-package rainbow-delimiters
   :init
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
@@ -48,12 +72,11 @@
   :config
   (use-package yasnippet-snippets)
   (yas-global-mode 1))
-(use-package golden-ratio
+(use-package zoom
   :config
-  (add-to-list 'golden-ratio-exclude-buffer-names " *SPEEDBAR*")
-  (add-to-list 'golden-ratio-exclude-buffer-names "*SPEEDBAR*")
-  ;; (golden-ratio-mode t)
-  )
+  (setq zoom-size '(0.5 . 0.5))
+  (setq zoom-ignored-major-modes '(treemacs))
+  (zoom-mode t))
 (use-package rainbow-mode
   :hook
   (html-mode . rainbow-mode)
@@ -80,7 +103,6 @@
 (require 'init-company)
 (require 'init-org)
 (require 'init-helm)
-;; (require 'init-speedbar)
 (require 'init-python)
 (require 'init-js)
 (require 'init-web)
@@ -117,4 +139,4 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (emacstree treemacs golden-ratio buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
+    (org-bullets buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
