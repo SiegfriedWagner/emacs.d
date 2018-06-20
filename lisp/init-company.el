@@ -10,12 +10,12 @@
 (use-package company-php
   :config
   (add-hook 'php-mode-hook
-	    '(lambda ()
-	       (require 'company-php)
-	       (company-mode t)
-	       (ac-php-core-eldoc-setup) ;; enable eldoc
-	       (make-local-variable 'company-backends)
-	       (add-to-list 'company-backends 'company-ac-php-backend))))
+	    (lambda ()
+	      (require 'company-php)
+	      (company-mode t)
+	      (ac-php-core-eldoc-setup) ;; enable eldoc
+	      (make-local-variable 'company-backends)
+	      (add-to-list 'company-backends 'company-ac-php-backend))))
 (use-package company-c-headers
   :config
   (add-to-list 'company-backends 'company-c-headers))
@@ -42,26 +42,7 @@
   )
 (use-package company-web
   :config
-  (add-to-list 'company-backends 'company-web-html)
-  ;; Enable CSS completion between <style>...</style>
-  ;; (defadvice company-css (before web-mode-set-up-ac-sources activate)
-  ;;   "Set CSS completion based on current language before running `company-css'."
-  ;;   (if (equal major-mode 'web-mode)
-  ;; 	(let ((web-mode-cur-language (web-mode-language-at-pos)))
-  ;;         (if (string= web-mode-cur-language "css")
-  ;;             (unless css-mode (css-mode))))))
-
-  ;; ;; Enable JavaScript completion between <script>...</script> etc.
-  ;; (defadvice company-tern (before web-mode-set-up-ac-sources activate)
-  ;;   "Set `tern-mode' based on current language before running `company-tern'."
-  ;;   (if (equal major-mode 'web-mode)
-  ;; 	(let ((web-mode-cur-language (web-mode-language-at-pos)))
-  ;;         (if (or (string= web-mode-cur-language "javascript")
-  ;; 		  (string= web-mode-cur-language "jsx"))
-  ;;             (unless tern-mode (tern-mode))
-  ;;           ;; (if tern-mode (tern-mode))
-  ;;           ))))
-  )
+  (add-to-list 'company-backends 'company-web-html))
 (use-package helm-company)
 (eval-after-load 'company
   '(progn
@@ -70,5 +51,13 @@
 (use-package company-statistics
   :init
   (add-hook 'after-init-hook 'company-statistics-mode))
-
+(use-package company-quickhelp
+  :config
+  (setq company-quickhelp-color-background "gray14"
+	company-quickhelp-color-foreground "white smoke"
+	company-quickhelp-max-lines nil
+	company-quickhelp-use-propertized-text t
+	company-selection-wrap-around t
+	company-quickhelp-idle-delay nil)
+  (company-quickhelp-mode))
 (provide 'init-company)
