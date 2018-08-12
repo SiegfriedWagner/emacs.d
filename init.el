@@ -96,7 +96,10 @@
 	    (lambda()
 	      (linum-mode -1)))
   (pdf-tools-install))
-
+(use-package projectile
+  :init
+  (projectile-mode t)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 ;; (use-package gdscript-mode)
 (require 'init-move-buffer)
 (require 'init-company)
@@ -143,4 +146,4 @@
  '(lsp-ui-doc-position (quote top))
  '(package-selected-packages
    (quote
-    (buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
+    (projectile rainbow-mode buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
