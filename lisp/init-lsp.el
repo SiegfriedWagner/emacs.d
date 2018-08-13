@@ -15,9 +15,9 @@
     (add-hook 'lsp-mode-hook 'lsp-ui-mode))
   (use-package company-lsp
     :init
-    (setq company-lsp-async t
-	  company-lsp-enable-snippet t
-	  company-lsp-enable-recompletion t)
+    (setq company-lsp-enable-snippet t
+	  company-lsp-enable-recompletion t
+	  company-lsp-cache-candidates t)
     :config
     (push 'company-lsp company-backends))
   :hook
