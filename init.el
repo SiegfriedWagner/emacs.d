@@ -146,4 +146,4 @@
  '(lsp-ui-doc-position (quote top))
  '(package-selected-packages
    (quote
-    (projectile rainbow-mode buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
+    (company-lsp lsp-ui lsp-python projectile rainbow-mode buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
