@@ -143,7 +143,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("57f95012730e3a03ebddb7f2925861ade87f53d5bbb255398357731a7b1ac0e0" default)))
+ '(fci-rule-color "#3E4451")
  '(lsp-ui-doc-position (quote top))
  '(package-selected-packages
    (quote
-    (company-lsp lsp-ui lsp-python projectile rainbow-mode buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode))))
+    (company-lsp lsp-ui lsp-python projectile rainbow-mode buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode)))
+ '(projectile-completion-system (quote helm)))
