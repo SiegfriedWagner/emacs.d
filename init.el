@@ -118,6 +118,7 @@
 (global-linum-mode t)
 (scroll-bar-mode -1)
 (electric-pair-mode t)
+(setq dired-dwim-target t)
 (setq tramp-verbose 10)
 (setq gdb-many-windows t gdb-show-main t)
 (global-set-key (kbd "C-<tab>") 'other-window)
