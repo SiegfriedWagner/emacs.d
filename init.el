@@ -103,6 +103,7 @@
 ;; (use-package gdscript-mode)
 (require 'init-move-buffer)
 (require 'init-company)
+(require 'init-csharp)
 (require 'init-org)
 (require 'init-helm)
 (require 'init-python)
@@ -151,5 +152,5 @@
  '(lsp-ui-doc-position (quote top))
  '(package-selected-packages
    (quote
-    (company-lsp lsp-ui lsp-python projectile rainbow-mode buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode)))
+    (dotnet omnisharp company-lsp lsp-ui lsp-python projectile rainbow-mode buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode)))
  '(projectile-completion-system (quote helm)))
