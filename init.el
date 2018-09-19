@@ -1,6 +1,12 @@
 (setq debug-on-error t)
 (setq inhibit-startup-message t)
-(setq make-backup-files nil)
+(setq backup-by-copying t
+      backup-directory-alist
+      '(("." . "~/.emacs.d/backups"))
+      delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'package)
@@ -13,11 +19,14 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
-	(package-refresh-contents)
-	(package-install 'use-package))
+  (package-refresh-contents)
+  (package-install 'use-package))
+(use-package diminish)
 (setq use-package-always-ensure t)
+;; end of 'use package' bootstrap
 (use-package try)
 (use-package which-key
+  :diminish
   :config
   (which-key-mode))
 (use-package nyan-mode
@@ -73,6 +82,7 @@
   (use-package yasnippet-snippets)
   (yas-global-mode 1))
 (use-package zoom
+  :diminish
   :config
   (setq zoom-size '(0.5 . 0.5))
   (setq zoom-ignored-major-modes '(treemacs))
@@ -88,6 +98,7 @@
   :config
   (global-flycheck-mode))
 (use-package aggressive-indent
+  :diminish
   :config
   (global-aggressive-indent-mode 1))
 (use-package pdf-tools
@@ -152,5 +163,5 @@
  '(lsp-ui-doc-position (quote top))
  '(package-selected-packages
    (quote
-    (dotnet omnisharp company-lsp lsp-ui lsp-python projectile rainbow-mode buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode)))
+    (diminish dotnet omnisharp company-lsp lsp-ui lsp-python projectile rainbow-mode buffer-move which-key use-package try sr-speedbar rainbow-delimiters nyan-mode)))
  '(projectile-completion-system (quote helm)))
