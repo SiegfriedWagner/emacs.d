@@ -11,4 +11,4 @@
   :ensure t
   :config
   (company-auctex-init))
-(provide init-tex)
+(provide 'init-tex)

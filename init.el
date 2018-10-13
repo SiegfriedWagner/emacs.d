@@ -16,6 +16,9 @@
 (setenv "PATH" (concat (getenv "PATH") ":/usr/bin"))
 (setq exec-path (append exec-path '("/usr/bin")))
 (package-initialize)
+(when (executable-find "hunspell")
+  (setq-default ispell-program-name "hunspell")
+  (setq ispell-really-hunspell t))
 (defalias 'yes-or-no-p 'y-or-n-p)
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
@@ -95,13 +98,13 @@
 (use-package zygospore
   :config
   (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows))
-(use-package flycheck
-  :config
-  (global-flycheck-mode))
-(use-package aggressive-indent
-  :diminish
-  :config
-  (global-aggressive-indent-mode 1))
+;; (use-package flycheck
+;;   :config
+;;   (global-flycheck-mode))
+;; (use-package aggressive-indent
+;;   :diminish
+;;   :config
+					;  (global-aggressive-indent-mode 1))
 (use-package pdf-tools
   :config
   (add-hook 'pdf-view-mode-hook
