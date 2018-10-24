@@ -17,6 +17,10 @@
   (setq ein:console-executable "/usr/bin/ipython")
   (setq ein:jupyter-default-server-command "jupyter"))
 
+;; (use-package elyp
+;;   :ensure t
+;;   :config
+;;   (elpy-enable))
 ;; (setq python-shell-interpreter "ipython"
 ;;       python-shell-interpreter-args "-i --simple-prompt")
 ;; (elpy-enable)

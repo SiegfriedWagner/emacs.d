@@ -131,7 +131,7 @@
 (require 'init-js)
 (require 'init-web)
 (require 'init-lsp)
-(require 'init-tex)
+;(require 'init-tex)
 (use-package atom-one-dark-theme
   :config
   (load-theme 'atom-one-dark t))
@@ -140,6 +140,8 @@
 (desktop-load-default)
 (global-linum-mode t)
 (scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
 (electric-pair-mode t)
 (setq dired-dwim-target t)
 (setq tramp-verbose 10)
@@ -170,4 +172,4 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-auctex auctex ccls w3m w3 diminish atom-one-dark-theme company-lsp lsp-python lsp-ui lsp-mode web-beautify web-mode ein helm-ag helm-tramp org-bullets dotnet omnisharp company-quickhelp company-statistics helm-company company-web ac-html-csswatcher company-tern company-irony irony company-c-headers company-php company buffer-move zygospore zoom yasnippet-snippets which-key use-package try treemacs rainbow-mode rainbow-delimiters projectile powerline pdf-tools nyan-mode flycheck aggressive-indent))))
+    (elpy elyp company-auctex auctex ccls w3m w3 diminish atom-one-dark-theme company-lsp lsp-python lsp-ui lsp-mode web-beautify web-mode ein helm-ag helm-tramp org-bullets dotnet omnisharp company-quickhelp company-statistics helm-company company-web ac-html-csswatcher company-tern company-irony irony company-c-headers company-php company buffer-move zygospore zoom yasnippet-snippets which-key use-package try treemacs rainbow-mode rainbow-delimiters projectile powerline pdf-tools nyan-mode flycheck aggressive-indent))))
