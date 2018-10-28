@@ -19,15 +19,6 @@
 (use-package company-c-headers
   :config
   (add-to-list 'company-backends 'company-c-headers))
-(use-package irony
-  :config
-  (defun my-irony-mode-on ()
-    ;; avoid enabling irony-mode in modes that inherits c-mode, e.g: php-mode(!)
-    (when (member major-mode irony-supported-major-modes)
-      (irony-mode 1)))
-  (add-hook 'c++-mode-hook 'my-irony-mode-on)
-  (add-hook 'c-mode-hook 'my-irony-mode-on)
-  (add-hook 'objc-mode-hook 'my-irony-mode-on))
 (use-package company-irony
   :config
   (add-to-list 'company-backends 'company-irony))
