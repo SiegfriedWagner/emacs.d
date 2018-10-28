@@ -60,4 +60,7 @@
 	company-selection-wrap-around t
 	company-quickhelp-idle-delay nil)
   (company-quickhelp-mode))
+;; (use-package company-jedi
+;;   :config
+;;   (add-to-list 'company-backends '(company-jedi company-files)))
 (provide 'init-company)
