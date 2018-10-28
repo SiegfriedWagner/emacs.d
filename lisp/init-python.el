@@ -1,10 +1,4 @@
 (require 'package)
-;; (use-package anaconda-mode)
-;; (add-hook 'python-mode-hook 'anaconda-mode)
-;; (use-package company-anaconda)
-;; (eval-after-load "company"
-;;   '(add-to-list 'company-backends 'company-anaconda))
-;; (use-package elpy)
 (use-package ein
   :init
   (if (file-directory-p (concat "/home/" (getenv "USER") "/jupyter_notebooks"))
@@ -17,19 +11,15 @@
   (setq ein:console-executable "/usr/bin/ipython")
   (setq ein:jupyter-default-server-command "jupyter"))
 
-;; (use-package elyp
+;; (use-package elpy
 ;;   :ensure t
-;;   :config
-;;   (elpy-enable))
-;; (setq python-shell-interpreter "ipython"
-;;       python-shell-interpreter-args "-i --simple-prompt")
-;; (elpy-enable)
-;; (setq python-shell-interpreter "IPython"
-;;       python-shell-interpreter-args "console --simple-prompt"
-;;       python-shell-prompt-detect-failure-warning nil)
-;; (add-to-list 'python-shell-completion-native-disabled-interpreters
-;;              "jupyter")
-;; (when (require 'flycheck nil t)
-;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
+;;   :init
+;;   (elpy-enable)
+;;   (when (require 'flycheck nil t)
+;;     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+;;     (add-hook 'elpy-mode-hook 'flycheck-mode))
+;;   (setq python-shell-interpreter "ipython"
+;; 	python-shell-interpreter-args "-i --simple-prompt"
+;; 	python-shell-prompt-detect-failure-warning nil)
+;;   )
 (provide 'init-python)
