@@ -115,6 +115,7 @@
   :ensure t
   :init
   (projectile-mode t)
+  (setq projectile-project-search-path '("~/Documents/git/"))
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 (use-package buffer-move
   :config
@@ -165,11 +166,3 @@
   (quote
    ("57f95012730e3a03ebddb7f2925861ade87f53d5bbb255398357731a7b1ac0e0" default)))
 '(fci-rule-color "#3E4451")
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (elpy elyp company-auctex auctex ccls w3m w3 diminish atom-one-dark-theme company-lsp lsp-python lsp-ui lsp-mode web-beautify web-mode ein helm-ag helm-tramp org-bullets dotnet omnisharp company-quickhelp company-statistics helm-company company-web ac-html-csswatcher company-tern company-irony irony company-c-headers company-php company buffer-move zygospore zoom yasnippet-snippets which-key use-package try treemacs rainbow-mode rainbow-delimiters projectile powerline pdf-tools nyan-mode flycheck aggressive-indent))))
