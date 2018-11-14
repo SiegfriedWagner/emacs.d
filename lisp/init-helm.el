@@ -1,4 +1,5 @@
 (use-package helm
+  :diminish "H"
   :config
   (use-package helm-tramp)
   (require 'helm-config)
