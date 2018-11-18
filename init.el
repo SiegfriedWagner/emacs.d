@@ -1,4 +1,5 @@
 (setq debug-on-error t)
+(setq warning-minimum-level :error) ;; Turns off anoying warrning popups
 (setq inhibit-startup-message t)
 (setq backup-by-copying t
       backup-directory-alist
@@ -16,9 +17,9 @@
 (setenv "PATH" (concat (getenv "PATH") ":/usr/bin"))
 (setq exec-path (append exec-path '("/usr/bin")))
 (package-initialize)
-;; (when (executable-find "hunspell")
-;;   (setq-default ispell-program-name "hunspell")
-;;   (setq ispell-really-hunspell t))
+(when (executable-find "hunspell")
+  (setq-default ispell-program-name "hunspell")
+  (setq ispell-really-hunspell t))
 (defalias 'yes-or-no-p 'y-or-n-p)
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
@@ -109,7 +110,8 @@
   :config
   (add-hook 'pdf-view-mode-hook
 	    (lambda()
-	      (linum-mode -1)))
+	      (linum-mode -1)
+	      (auto-revert-mode 1)))
   (pdf-tools-install))
 (use-package projectile
   :ensure t
@@ -124,7 +126,7 @@
   (global-set-key (kbd "<C-S-left>")   'buf-move-left)
   (global-set-key (kbd "<C-S-right>")  'buf-move-right))
 (require 'init-company)
-(require 'init-c|cpp)
+(require 'init-clang)
 (require 'init-csharp)
 (require 'init-org)
 (require 'init-helm)
@@ -166,3 +168,12 @@
   (quote
    ("57f95012730e3a03ebddb7f2925861ade87f53d5bbb255398357731a7b1ac0e0" default)))
 '(fci-rule-color "#3E4451")
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (company-auctex zygospore zoom yasnippet-snippets which-key web-mode web-beautify use-package try treemacs rainbow-mode rainbow-delimiters powerline pdf-tools omnisharp nyan-mode lsp-ui lsp-python irony-eldoc helm-tramp helm-company helm-ag flycheck-irony elpy ein dotnet diminish company-web company-tern company-statistics company-quickhelp company-php company-lsp company-jedi company-irony company-c-headers company-anaconda ccls buffer-move atom-one-dark-theme ac-html-csswatcher))))

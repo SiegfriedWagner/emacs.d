@@ -20,4 +20,4 @@
                 projectile-project-root-files-top-down-recurring)))
 
 
-(provide 'init-c|cpp)
+(provide 'init-clang)

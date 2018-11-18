@@ -1,7 +1,11 @@
 (use-package helm
-  :diminish "H"
+  :diminish "H "
+  :ensure t
+  :init
+  (require 'helm-config)
   :config
-  (use-package helm-tramp)
+  (use-package helm-tramp
+    :ensure t)
   (require 'helm-config)
   (setq helm-autoresize-max-height 30
 	helm-autoresize-min-height 20
@@ -21,5 +25,9 @@
     :config
     (global-set-key (kbd "C-S-s") 'helm-ag)
     )
+  (defun disable-helm-minor ()
+    (flycheck-mode -1))
+  (add-hook 'dired-mode-hook #'disable-helm-minor)
   )
+
 (provide 'init-helm)
