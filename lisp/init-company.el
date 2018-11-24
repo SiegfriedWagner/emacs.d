@@ -1,6 +1,6 @@
 (require 'package)
 (use-package company
-  :diminish "x"
+  :diminish
   :config 
   (setq company-tooltip-idle-delay nil company-minimum-prefix-length 1)
   (global-company-mode)

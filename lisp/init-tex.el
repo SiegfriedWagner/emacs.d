@@ -1,5 +1,7 @@
 (require 'package)
 (require 'company)
+(use-package auctex
+  :ensure t)
 (load "auctex.el" nil t t)
 (load "preview-latex.el" nil t t)
 (use-package tex
