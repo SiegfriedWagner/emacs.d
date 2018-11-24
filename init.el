@@ -16,9 +16,8 @@
 (setenv "PATH" (concat (getenv "PATH") ":/usr/bin"))
 (setq exec-path (append exec-path '("/usr/bin")))
 (package-initialize)
-(when (executable-find "hunspell")
-  (setq-default ispell-program-name "hunspell")
-  (setq ispell-really-hunspell t))
+(when (executable-find "aspell")
+  (setq-default ispell-program-name "aspell"))
 (defalias 'yes-or-no-p 'y-or-n-p)
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
