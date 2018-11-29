@@ -167,12 +167,3 @@
   (quote
    ("57f95012730e3a03ebddb7f2925861ade87f53d5bbb255398357731a7b1ac0e0" default)))
 '(fci-rule-color "#3E4451")
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (company-auctex zygospore zoom yasnippet-snippets which-key web-mode web-beautify use-package try treemacs rainbow-mode rainbow-delimiters powerline pdf-tools omnisharp nyan-mode lsp-ui lsp-python irony-eldoc helm-tramp helm-company helm-ag flycheck-irony elpy ein dotnet diminish company-web company-tern company-statistics company-quickhelp company-php company-lsp company-jedi company-irony company-c-headers company-anaconda ccls buffer-move atom-one-dark-theme ac-html-csswatcher))))

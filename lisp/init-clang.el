@@ -4,7 +4,8 @@
 (defun ccls//enable ()
   (condition-case nil
       (lsp-ccls-enable)
-    (user-error nil)))
+    (user-error nil))
+  (flycheck-mode 1))
 (use-package ccls
   :ensure t
   :commands lsp-ccls-enable
