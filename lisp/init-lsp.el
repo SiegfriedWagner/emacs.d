@@ -1,28 +1,37 @@
-(require 'company)
+;;(require 'company)
 (require 'projectile)
+(require 'init-company)
+
+;; Clang support
+(use-package ccls
+  :ensure t
+  :hook ((c-mode c++-mode) .
+         (lambda () (require 'ccls) (lsp)))
+  :init
+  (setq ccls-executable "/usr/bin/ccls")
+  )
+(with-eval-after-load 'projectile
+  (setq projectile-project-root-files-top-down-recurring
+        (append '("compile_commands.json"
+                  ".ccls")
+                projectile-project-root-files-top-down-recurring)))
+
 (use-package lsp-mode
-  :config
-  (require 'lsp-imenu)
-  (add-hook 'lsp-after-open-hook 'lsp-enable-imenu)  
-  (lsp-define-stdio-client lsp-python "python"
-                           #'projectile-project-root
-                           '("pyls"))
-  (add-hook 'python-mode-hook
-            (lambda ()
-              (lsp-python-enable)))
+  :init
+  (require 'lsp-clients)
+  (add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
+  :hook ((python-mode . lsp)
+	 (lsp-after-open . (lambda () (lsp-enable-imenu) (ding))))
   
-  (use-package lsp-ui
-    :config
-    (setq lsp-ui-sideline-ignore-duplicate t)
-    (setq lsp-ui-doc-position "top")
-    (add-hook 'lsp-mode-hook 'lsp-ui-mode))
-  (defun lsp-set-cfg ()
-    (let ((lsp-cfg `(:pyls (:configurationSources ("flake8")))))
-      ;; TODO: check lsp--cur-workspace here to decide per server / project
-      (lsp--set-configuration lsp-cfg)))
-   
-   (add-hook 'lsp-after-initialize-hook 'lsp-set-cfg)
-)
+  :preface (setq lsp-enable-flycheck 1
+                 lsp-enable-indentation nil
+                 lsp-highlight-symbol-at-point nil))
+(use-package lsp-ui
+  :config
+  (setq lsp-ui-sideline-ignore-duplicate t
+	lsp-ui-doc-position "top")
+  :hook (lsp-mode . lsp-ui-mode))
+
 (use-package company-lsp
   :config
   (setq
@@ -31,4 +40,5 @@
    company-lsp-enable-recompletion t
    company-lsp-cache-candidates t)
   (push 'company-lsp company-backends))
+
 (provide 'init-lsp)

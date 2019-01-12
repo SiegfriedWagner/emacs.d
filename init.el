@@ -98,13 +98,6 @@
 (use-package zygospore
   :config
   (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows))
-;; (use-package flycheck
-;;   :config
-;;   (global-flycheck-mode))
-;; (use-package aggressive-indent
-;;   :diminish
-;;   :config
-					;  (global-aggressive-indent-mode 1))
 (use-package pdf-tools
   :config
   (add-hook 'pdf-view-mode-hook
@@ -125,7 +118,6 @@
   (global-set-key (kbd "<C-S-left>")   'buf-move-left)
   (global-set-key (kbd "<C-S-right>")  'buf-move-right))
 (require 'init-company)
-(require 'init-clang)
 (require 'init-csharp)
 (require 'init-org)
 (require 'init-helm)
@@ -134,6 +126,7 @@
 (require 'init-web)
 (require 'init-lsp)
 (require 'init-tex)
+
 (use-package atom-one-dark-theme
   :config
   (load-theme 'atom-one-dark t))

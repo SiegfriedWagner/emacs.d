@@ -11,15 +11,4 @@
   (setq ein:console-executable "/usr/bin/ipython")
   (setq ein:jupyter-default-server-command "jupyter"))
 
-;; (use-package elpy
-;;   :ensure t
-;;   :init
-;;   (elpy-enable)
-;;   (when (require 'flycheck nil t)
-;;     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-;;     (add-hook 'elpy-mode-hook 'flycheck-mode))
-;;   (setq python-shell-interpreter "ipython"
-;; 	python-shell-interpreter-args "-i --simple-prompt"
-;; 	python-shell-prompt-detect-failure-warning nil)
-;;   )
 (provide 'init-python)
