@@ -21,7 +21,7 @@
   (require 'lsp-clients)
   (add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
   :hook ((python-mode . lsp)
-	 (lsp-after-open . (lambda () (lsp-enable-imenu) (ding))))
+	 (lsp-after-open . (lambda () (lsp-enable-imenu))))
   
   :preface (setq lsp-enable-flycheck 1
                  lsp-enable-indentation nil
