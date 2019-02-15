@@ -2,7 +2,9 @@
 (use-package company
   :diminish
   :config 
-  (setq company-tooltip-idle-delay nil company-minimum-prefix-length 1)
+  (setq company-tooltip-idle-delay nil
+	company-minimum-prefix-length 1
+	company-dabbrev-downcase 0)
   (global-company-mode)
   (define-key company-mode-map (kbd "C-SPC") 'company-complete)
   ;; (add-to-list 'company-backends 'company-yasnippet) TODO: Fix yasnippet dominance
@@ -51,6 +53,8 @@
 	company-selection-wrap-around t
 	company-quickhelp-idle-delay nil)
   (company-quickhelp-mode))
+(use-package company-box
+  :hook (company-mode . company-box-mode))
 ;; (use-package company-jedi
 ;;   :config
 ;;   (add-to-list 'company-backends '(company-jedi company-files)))
